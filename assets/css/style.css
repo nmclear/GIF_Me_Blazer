@@ -1,5 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    background-image: url(../images/murals-3412718_1920.jpg);
+    font-family: 'Londrina Solid', cursive;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+header {
+    margin-top: 40px;
+}
+
+h1 {
+    text-shadow: 6px 6px #000000;
+    font-size: 100px;
+    color: white;
+}
 
 
+.addButtonDisplay {
+    margin: 0 auto;
+}
+
+.gifDiv {
+    margin: 5px;
+}
+
+img {
+    border-radius: 15px/45px;
+}
+
+.gif {
+    margin-bottom: 10px;
+}
 .gifButton {
+    color: #F5F5F5;
     text-transform: capitalize;
+    margin: 4px;
+    font-size: 25px;
+    background: linear-gradient(45deg, rgb(80,133,236,0.8) ,rgb(140,234,100,1));
+    border: #000000 solid 1px;
+    border-radius: 30px/10px;
+
 }

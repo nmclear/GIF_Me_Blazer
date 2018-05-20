@@ -14,6 +14,8 @@ $(document).ready(function() {
         "Modern Family"
     ];
 
+    var limitNum = 10;
+
 //========================================================================================================================
 // FUNCTIONS
 //========================================================================================================================
@@ -52,7 +54,7 @@ createButton();
 
         // Creating URL
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-          topic + "&api_key=1S5pFMN37AVDaiKL2Tf1dLIue0cXXVYB&limit=10";
+          topic + "&api_key=1S5pFMN37AVDaiKL2Tf1dLIue0cXXVYB&limit=" + limitNum;
   
         // AJAX call
         $.ajax({
@@ -63,7 +65,7 @@ createButton();
             var results = response.data;
 
             for(var i = 0; i < results.length; i++) {
-                var gifDiv = $("<div class='item'>");
+                var gifDiv = $("<span class='gifDiv'>");
 
                 var gifRating = results[i].rating.toUpperCase();
                 var pRating = $("<p>").text("Rating: " + gifRating);
@@ -77,13 +79,14 @@ createButton();
 
 
                 gifDiv.append(gif);
-                gifDiv.append(pRating);
+                // gifDiv.append(pRating);
 
                 $(".gifDisplay").prepend(gifDiv);
             }
           });
     });
 
+    // Switches GIFs between still and animate on click
     $('body').on('click', 'img.gif', function() {  
         var state = $(this).attr("data-state");
         // if gif still, will switch source link to animated
@@ -98,10 +101,17 @@ createButton();
           }
     });
 
+    $('body').on("click", 'button#moreGifs', function() {
+        if(limitNum < 50) {
+            limitNum = limitNum + 10;
+            console.log(limitNum);
+            $('.gifButton').triggerHandler('click');
+        }
+        else {
+            alert("no more than 50");
+        }
 
-
-
-
+    });
 
 
 

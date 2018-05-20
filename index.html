@@ -8,10 +8,15 @@
 
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 <body>
+
+    <header>
+        <h1>GIF Me Blazer</h1>
+    </header>
 
 <!-- Grid -->
 
@@ -19,16 +24,21 @@
         <div class="row">
             <div class="col-lg-12 buttonDisplay"></div>
         </div>
+
         <div class="row">
-            <div class="col-lg-8 gifDisplay"></div>
-            <div class="col-lg-4 addButtonDisplay">
+            <div class="col-lg-6 addButtonDisplay">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="searchInput" placeholder="type for new GIF">
+                    <input type="text" class="form-control" id="searchInput" placeholder="type for new GIF" required>
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" id="searchSubmit" type="button">GIF ME</button>
                         </div>
+                        <button class="btn btn-outline-secondary" id="moreGifs" type="button">I need more</button>
                 </div>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 gifDisplay"></div>
         </div>
     </div>
 
