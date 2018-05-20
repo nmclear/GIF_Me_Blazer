@@ -33,7 +33,7 @@ createButton();
 
 
 //========================================================================================================================
-// AJAX FUNCTION
+// AJAX FUNCTION AND EVENT LISTENERS
 //========================================================================================================================
     // Event listener to display new buttons
     $("#searchSubmit").on("click", function(){
@@ -43,17 +43,13 @@ createButton();
         createButton();
     });
 
-
-
-
 // Button event listener to display GIFs
     $('body').on("click", 'button.gifButton', function() {
-        // store data-name from button clicked
+        //clears display for new gifs
         $('.gifDisplay').empty();
-
-
+        // store data-name from button clicked
         var topic = $(this).attr("data-name");
-        console.log(topic);
+
         // Creating URL
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
           topic + "&api_key=1S5pFMN37AVDaiKL2Tf1dLIue0cXXVYB&limit=10";
@@ -69,19 +65,44 @@ createButton();
             for(var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div class='item'>");
 
-                var gifRating = results[i].rating;
+                var gifRating = results[i].rating.toUpperCase();
                 var pRating = $("<p>").text("Rating: " + gifRating);
-                var topicGIF = $("<img>");
+                var gif = $("<img>");
 
-                topicGIF.attr("src", results[i].images.fixed_height.url);
+                gif.addClass('gif');
+                gif.attr('src', results[i].images.fixed_height_still.url);
+                gif.attr('data-state', 'still');
+                gif.attr('data-still', results[i].images.fixed_height_still.url);
+                gif.attr('data-animate', results[i].images.fixed_height.url);
 
+
+                gifDiv.append(gif);
                 gifDiv.append(pRating);
-                gifDiv.append(topicGIF);
 
                 $(".gifDisplay").prepend(gifDiv);
             }
           });
     });
+
+    $('body').on('click', 'img.gif', function() {  
+        var state = $(this).attr("data-state");
+        // if gif still, will switch source link to animated
+        if(state === 'still'){
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        }
+        // if gif animated, will switch source link to still
+        else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+          }
+    });
+
+
+
+
+
+
 
 
 
