@@ -63,13 +63,20 @@ createButton();
         })
         .then(function(response) {
             var results = response.data;
-
+console.log(results);
             for(var i = 0; i < results.length; i++) {
                 var gifDiv = $("<span class='gifDiv'>");
 
                 var gifRating = results[i].rating.toUpperCase();
                 var pRating = $("<p>").text("Rating: " + gifRating);
                 var gif = $("<img>");
+
+
+                // var downloadButton = $('<a download class="button">');
+                // downloadButton.attr('href', results[i].images.fixed_height_still.url);
+                // downloadButton.attr('download');
+                // downloadButton.text("Download");
+
 
                 gif.addClass('gif');
                 gif.attr('src', results[i].images.fixed_height_still.url);
@@ -80,7 +87,7 @@ createButton();
 
                 gifDiv.append(gif);
                 // gifDiv.append(pRating);
-
+                // gifDiv.append(downloadButton);
                 $(".gifDisplay").prepend(gifDiv);
             }
           });
@@ -114,6 +121,18 @@ createButton();
     });
 
 
+
+
+    // $('body').on('click', 'a.button', function(event){
+    //     event.preventDefault();
+    // })
+    
+
+
+{/* <div id="download">
+    <img src="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" id="image" />
+    <a class="button" href="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" download="smile.jpg">Download image</a>
+</div> */}
 
 
 
