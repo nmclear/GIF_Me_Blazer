@@ -114,7 +114,7 @@ createButton();
         if(limitNum < 50) {
             limitNum = limitNum + 10;
             console.log(limitNum);
-            $('.gifButton').trigger('click');
+            $('.gifButton').triggerHandler('click');
         }
         else {
             alert("no more than 50");
@@ -122,6 +122,14 @@ createButton();
 
     });
 
+
+    // click listen to submit input on enter key
+    $("input").keypress(function(event) {
+        if (event.which == 13) {
+            event.preventDefault();
+            $("#searchSubmit").click();
+        }
+    });
 
 
 });
