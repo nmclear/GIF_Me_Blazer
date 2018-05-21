@@ -11,7 +11,8 @@ $(document).ready(function() {
         "Arrested Development",
         "Workaholics",
         "Friends",
-        "Modern Family"
+        "Modern Family",
+        "New Girl"
     ];
 
     var limitNum = 10;
@@ -26,7 +27,6 @@ $(document).ready(function() {
             button.attr('data-name', topics[i]);
             button.addClass('gifButton');
             $('.buttonDisplay').append(button);
-            console.log(button.attr('data-name'));
         }
     }
 
@@ -52,9 +52,10 @@ createButton();
         // store data-name from button clicked
         var topic = $(this).attr("data-name");
 
+
         // Creating URL
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-          topic + "&api_key=1S5pFMN37AVDaiKL2Tf1dLIue0cXXVYB&limit=" + limitNum;
+          topic + "&api_key=1S5pFMN37AVDaiKL2Tf1dLIue0cXXVYB" + "&limit=" + limitNum;
   
         // AJAX call
         $.ajax({
@@ -63,12 +64,13 @@ createButton();
         })
         .then(function(response) {
             var results = response.data;
-console.log(results);
+
             for(var i = 0; i < results.length; i++) {
-                var gifDiv = $("<span class='gifDiv'>");
+                var gifDiv = $("<div class='gifDiv'>");
 
                 var gifRating = results[i].rating.toUpperCase();
-                var pRating = $("<p>").text("Rating: " + gifRating);
+                var pRating = $('<div class="rating">').text("Rating: " + gifRating);
+                // var pRating = "Rating: " + gifRating;
                 var gif = $("<img>");
 
 
@@ -86,7 +88,7 @@ console.log(results);
 
 
                 gifDiv.append(gif);
-                // gifDiv.append(pRating);
+                gifDiv.append(pRating);
                 // gifDiv.append(downloadButton);
                 $(".gifDisplay").prepend(gifDiv);
             }
@@ -112,29 +114,13 @@ console.log(results);
         if(limitNum < 50) {
             limitNum = limitNum + 10;
             console.log(limitNum);
-            $('.gifButton').triggerHandler('click');
+            $('.gifButton').trigger('click');
         }
         else {
             alert("no more than 50");
         }
 
     });
-
-
-
-
-    // $('body').on('click', 'a.button', function(event){
-    //     event.preventDefault();
-    // })
-    
-
-
-{/* <div id="download">
-    <img src="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" id="image" />
-    <a class="button" href="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" download="smile.jpg">Download image</a>
-</div> */}
-
-
 
 
 
