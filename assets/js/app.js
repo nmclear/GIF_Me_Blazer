@@ -39,10 +39,11 @@ createButton();
 //========================================================================================================================
     // Event listener to display new buttons
     $("#searchSubmit").on("click", function(){
-        var text = $('#searchInput').val();
+        var text = $('#searchInput').val().trim();
         topics.push(text);
         $('.buttonDisplay').empty();
         createButton();
+        $('#searchInput').val('');
     });
 
 // Button event listener to display GIFs
@@ -119,6 +120,7 @@ createButton();
         if (event.which == 13) {
             event.preventDefault();
             $("#searchSubmit").click();
+            $('#searchInput').val('');
         }
     });
 
