@@ -1,5 +1,5 @@
 # homework_6_GIF
-Homework 6 GIF
+https://nmclear.github.io/homework_6_GIF/
 
 # GIF ME BLAZER
 
