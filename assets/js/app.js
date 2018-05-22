@@ -52,7 +52,6 @@ createButton();
         // store data-name from button clicked
         var topic = $(this).attr("data-name");
 
-
         // Creating URL
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
           topic + "&api_key=1S5pFMN37AVDaiKL2Tf1dLIue0cXXVYB" + "&limit=" + limitNum;
@@ -73,13 +72,6 @@ createButton();
                 // var pRating = "Rating: " + gifRating;
                 var gif = $("<img>");
 
-
-                // var downloadButton = $('<a download class="button">');
-                // downloadButton.attr('href', results[i].images.fixed_height_still.url);
-                // downloadButton.attr('download');
-                // downloadButton.text("Download");
-
-
                 gif.addClass('gif');
                 gif.attr('src', results[i].images.fixed_height_still.url);
                 gif.attr('data-state', 'still');
@@ -89,7 +81,6 @@ createButton();
 
                 gifDiv.append(gif);
                 gifDiv.append(pRating);
-                // gifDiv.append(downloadButton);
                 $(".gifDisplay").prepend(gifDiv);
             }
           });
