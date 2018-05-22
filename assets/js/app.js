@@ -29,10 +29,8 @@ $(document).ready(function() {
             $('.buttonDisplay').append(button);
         }
     }
-
-
-createButton();
-
+    //setting up the initial buttons in the topics array.
+    createButton();
 
 //========================================================================================================================
 // AJAX FUNCTION AND EVENT LISTENERS
@@ -67,12 +65,11 @@ createButton();
 
             for(var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div class='gifDiv'>");
-
+                //getting the rating and placing it in a div
                 var gifRating = results[i].rating.toUpperCase();
                 var pRating = $('<div class="rating">').text("Rating: " + gifRating);
-                // var pRating = "Rating: " + gifRating;
+                //adding attributes to gif
                 var gif = $("<img>");
-
                 gif.addClass('gif');
                 gif.attr('src', results[i].images.fixed_height_still.url);
                 gif.attr('data-state', 'still');
@@ -105,7 +102,6 @@ createButton();
     $('body').on("click", 'button#moreGifs', function() {
         if(limitNum < 50) {
             limitNum = limitNum + 10;
-            console.log(limitNum);
             $('.gifButton').triggerHandler('click');
         }
         else {
