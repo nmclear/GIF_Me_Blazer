@@ -1,7 +1,5 @@
-# homework_6_GIF
-https://nmclear.github.io/homework_6_GIF/
-
 # GIF ME BLAZER
+https://nmclear.github.io/GIF_Me_Blazer/
 
 Let's get down to GIF-ness
 
